@@ -30,7 +30,6 @@ dependencies {
     api project(':data')
 
     // Data binding
-    api project(':model')
     kapt "com.android.databinding:compiler:$gradle_version"
 
     // Kotlin
@@ -52,18 +51,18 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$constraint_layout_version"
 
     // Architecture Components
-    implementation "android.arch.lifecycle:extensions:$architecture_components_extension_version"
     kapt "android.arch.lifecycle:compiler:$architecture_components_version"
-    testCompile("android.arch.core:core-testing:$architecture_components_core_testing_version", {
-        exclude group: 'com.android.support', module: 'support-compat'
-        exclude group: 'com.android.support', module: 'support-annotations'
-        exclude group: 'com.android.support', module: 'support-core-utils'
-    })
+    implementation "android.arch.lifecycle:extensions:$architecture_components_extension_version"
 
     // Networking
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
     // Tests
+    testImplementation("android.arch.core:core-testing:$architecture_components_core_testing_version", {
+        exclude group: 'com.android.support', module: 'support-compat'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-core-utils'
+    })
     testImplementation "junit:junit:$test_junit_version"
     androidTestImplementation "com.android.support.test:runner:$test_runner_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$test_espresso_core_version"
