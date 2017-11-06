@@ -1,10 +1,11 @@
 package com.felipearaujo.newsapp.di
 
 import android.app.Application
+import com.felipearaujo.data.di.NetworkModule
 import com.felipearaujo.newsapp.AppApplication
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.support.AndroidSupportInjectionModule
+import dagger.android.AndroidInjectionModule
 import javax.inject.Singleton
 
 /**
@@ -12,7 +13,7 @@ import javax.inject.Singleton
  */
 @Singleton
 @Component(modules = arrayOf(
-        AndroidSupportInjectionModule::class, AppModule::class, ActivityBuilder::class
+        AppModule::class, NetworkModule::class, AndroidInjectionModule::class, ActivityBuilder::class
 ))
 interface AppComponent {
 

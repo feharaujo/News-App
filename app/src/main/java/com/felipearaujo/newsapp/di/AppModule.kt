@@ -1,10 +1,19 @@
 package com.felipearaujo.newsapp.di
 
-import com.felipearaujo.data.di.NetworkModule
+import android.app.Application
+import android.content.Context
 import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
 
 /**
  * Created by felipearaujo on 04/11/17.
  */
-@Module(includes = arrayOf(NetworkModule::class))
-class AppModule
+@Module
+class AppModule {
+
+    @Provides
+    @Singleton
+    fun providesApplicationContext(app: Application): Context = app
+
+}
