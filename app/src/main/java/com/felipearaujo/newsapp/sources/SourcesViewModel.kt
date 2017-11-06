@@ -1,16 +1,28 @@
 package com.felipearaujo.newsapp.sources
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MediatorLiveData
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
-import android.util.Log
+import com.felipearaujo.data.NewsRepository
+import com.felipearaujo.model.SourceResponse
 
 /**
  * Created by felipearaujo on 04/11/17.
  */
-class SourcesViewModel : ViewModel() {
+class SourcesViewModel(private val repository: NewsRepository) : ViewModel() {
 
+    private val sourcesResponse = MediatorLiveData<SourceResponse>()
 
-    fun print() {
-        Log.v(" ", " ")
+    fun fetchSources(): LiveData<SourceResponse> {
+        sourcesResponse.addSource(
+                repository.fetchSources(),
+                Observer {
+                    sourcesResponse.value = it
+                }
+        )
+
+        return sourcesResponse
     }
 
 }

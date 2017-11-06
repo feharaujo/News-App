@@ -27,7 +27,11 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
+    // Data layer
     api project(':data')
+
+    // Model layer
+    api project(':model')
 
     // Data binding
     kapt "com.android.databinding:compiler:$gradle_version"

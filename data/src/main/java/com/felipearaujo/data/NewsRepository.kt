@@ -1,10 +1,13 @@
 package com.felipearaujo.data
 
+import android.arch.lifecycle.LiveData
+import com.felipearaujo.model.SourceResponse
+
 /**
  * Created by felipearaujo on 04/11/17.
  */
 interface NewsRepository {
 
-    fun fetchSources()
+    fun fetchSources(): LiveData<SourceResponse>
 
 }
