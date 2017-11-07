@@ -48,6 +48,10 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
 
     // Support library
+    implementation("com.android.support:recyclerview-v7:$support_lib_version", {
+        exclude group: 'com.android.support', module: 'animated-vector'
+        exclude group: 'com.android.support', module: 'support-media-compat'
+    })
     implementation("com.android.support:appcompat-v7:$support_lib_version", {
         exclude group: 'com.android.support', module: 'animated-vector'
         exclude group: 'com.android.support', module: 'support-media-compat'

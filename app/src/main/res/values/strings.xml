@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">News App</string>
+    <string name="error_not_fetch_data">Could not fetch data. Touch the screen to try again.</string>
 </resources>

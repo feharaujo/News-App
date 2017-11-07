@@ -1,5 +1,6 @@
 package com.felipearaujo.newsapp.sources
 
+import android.arch.lifecycle.ViewModelProviders
 import com.felipearaujo.data.NewsRepository
 import dagger.Module
 import dagger.Provides
@@ -11,9 +12,8 @@ import dagger.Provides
 class SourcesActivityModule {
 
     @Provides
-    fun providesViewModel(repository: NewsRepository): SourcesViewModel {
-        return SourcesViewModelFactory(repository).create(SourcesViewModel::class.java)
+    fun providesViewModel(repository: NewsRepository): SourcesViewModelFactory {
+        return SourcesViewModelFactory(repository)
     }
-
 
 }

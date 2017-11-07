@@ -7,5 +7,5 @@ data class ArticleResponse(
         val status: String?,
         val source: String?,
         val articles: List<Article>?,
-        val throwable: Throwable?
+        @Transient val throwable: Throwable?
 )

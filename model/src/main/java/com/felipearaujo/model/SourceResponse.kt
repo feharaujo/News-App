@@ -6,6 +6,6 @@ package com.felipearaujo.model
 data class SourceResponse(
         val status: String?,
         val sources: List<Source>?,
-        val throwable: Throwable?
+        @Transient val throwable: Throwable?
 
 )
