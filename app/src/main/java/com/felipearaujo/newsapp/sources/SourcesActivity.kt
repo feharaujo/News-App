@@ -29,9 +29,9 @@ class SourcesActivity : AppCompatActivity() {
         LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 
-    val mDividerItemDecoration: DividerItemDecoration by lazy {
+   /* val mDividerItemDecoration: DividerItemDecoration by lazy {
         DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
-    }
+    }*/
 
     val mAdapter: SourcesAdapter by lazy {
         SourcesAdapter()
@@ -45,7 +45,7 @@ class SourcesActivity : AppCompatActivity() {
         mBinding.viewModel = mViewModel
 
         mBinding.rvSources.layoutManager = mLayoutManager
-        mBinding.rvSources.addItemDecoration(mDividerItemDecoration)
+        //mBinding.rvSources.addItemDecoration(mDividerItemDecoration)
         mBinding.rvSources.setHasFixedSize(true)
         mBinding.rvSources.adapter = mAdapter
 
