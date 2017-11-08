@@ -4,7 +4,10 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+    buildToolsVersion '27.0.1'
     compileSdkVersion 27
+
     defaultConfig {
         applicationId "com.felipearaujo.newsapp"
         minSdkVersion 15

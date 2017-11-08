@@ -5,23 +5,36 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.databinding.ActivitySourcesBinding
 import dagger.android.AndroidInjection
-import org.jetbrains.anko.toast
 import javax.inject.Inject
 
 class SourcesActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var viewModelFactory: SourcesViewModelFactory
+    lateinit var mViewModelFactory: SourcesViewModelFactory
 
-    val binding: ActivitySourcesBinding by lazy {
+    val mBinding: ActivitySourcesBinding by lazy {
         DataBindingUtil.setContentView<ActivitySourcesBinding>(this, R.layout.activity_sources)
     }
 
-    val viewModel: SourcesViewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(SourcesViewModel::class.java)
+    val mViewModel: SourcesViewModel by lazy {
+        ViewModelProviders.of(this, mViewModelFactory).get(SourcesViewModel::class.java)
+    }
+
+    val mLayoutManager: LinearLayoutManager by lazy {
+        LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+    }
+
+    val mDividerItemDecoration: DividerItemDecoration by lazy {
+        DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
+    }
+
+    val mAdapter: SourcesAdapter by lazy {
+        SourcesAdapter()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,13 +42,16 @@ class SourcesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sources)
 
-        binding.viewModel = viewModel
+        mBinding.viewModel = mViewModel
 
-        viewModel.fetchSources().observe(this, Observer {
-            if (it != null && it.throwable == null) {
-                toast("Success!")
-            } else {
-                toast("Fail")
+        mBinding.rvSources.layoutManager = mLayoutManager
+        mBinding.rvSources.addItemDecoration(mDividerItemDecoration)
+        mBinding.rvSources.setHasFixedSize(true)
+        mBinding.rvSources.adapter = mAdapter
+
+        mViewModel.fetchSources().observe(this, Observer {
+            if (it != null) {
+                mAdapter.addSources(it)
             }
         })
     }

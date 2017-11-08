@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+    buildToolsVersion '27.0.1'
     compileSdkVersion 27
 
     defaultConfig {
@@ -13,7 +15,6 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -23,7 +24,6 @@ android {
             it.buildConfigField 'String', 'API_KEY', api_key
         }
     }
-
 }
 
 dependencies {
