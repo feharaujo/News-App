@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">News App</string>
     <string name="error_not_fetch_data">Could not fetch data. Touch the screen to try again.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
