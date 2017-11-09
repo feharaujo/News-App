@@ -44,7 +44,7 @@ class ArticlesAdapter(val mPicasso: Picasso) : RecyclerView.Adapter<ArticlesAdap
 
         fun bind(item: Article) {
             itemArticleBinding.article = item
-            mPicasso.load(item.url).into(itemArticleBinding.ivImgPreview)
+            mPicasso.load(item.urlToImage).into(itemArticleBinding.ivImgPreview)
             itemArticleBinding.executePendingBindings()
         }
 
