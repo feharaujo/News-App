@@ -1,7 +1,10 @@
 package com.felipearaujo.newsapp
 
+import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import com.felipearaujo.newsapp.sources.SourcesViewModel
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 
@@ -16,6 +19,5 @@ open class BaseFragment: Fragment() {
 
         super.onCreate(savedInstanceState)
     }
-
 
 }

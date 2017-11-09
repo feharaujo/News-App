@@ -12,8 +12,17 @@ import dagger.Provides
 class SourcesActivityModule {
 
     @Provides
-    fun providesViewModel(repository: NewsRepository): SourcesViewModelFactory {
+    fun providesSourcesView(activity: SourcesActivity): SourcesView {
+        return activity
+    }
+
+    @Provides
+    fun providesViewModelFactory(repository: NewsRepository): SourcesViewModelFactory {
         return SourcesViewModelFactory(repository)
     }
 
+    @Provides
+    fun providesSourcesAdapter(view: SourcesView): SourcesAdapter {
+        return SourcesAdapter(view)
+    }
 }

@@ -1,6 +1,7 @@
 package com.felipearaujo.data
 
 import android.arch.lifecycle.LiveData
+import com.felipearaujo.model.ArticleResponse
 import com.felipearaujo.model.SourceResponse
 
 /**
@@ -9,5 +10,7 @@ import com.felipearaujo.model.SourceResponse
 interface NewsRepository {
 
     fun fetchSources(): LiveData<SourceResponse>
+
+    fun fetchArticles(source: String): LiveData<ArticleResponse>
 
 }

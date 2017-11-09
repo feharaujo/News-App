@@ -12,19 +12,22 @@ import com.felipearaujo.newsapp.databinding.ItemSourceBinding
 /**
  * Created by felipearaujo on 07/11/17.
  */
-class SourcesAdapter : RecyclerView.Adapter<SourcesAdapter.SourcesViewHolder>() {
+class SourcesAdapter(val mView: SourcesView) : RecyclerView.Adapter<SourcesAdapter.SourcesViewHolder>() {
 
     private val mSourcesList = ArrayList<Source>()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SourcesViewHolder {
         val inflater = LayoutInflater.from(parent?.context)
         val binding = DataBindingUtil.inflate<ItemSourceBinding>(inflater, R.layout.item_source, parent, false);
-        return SourcesViewHolder(binding);
+        return SourcesViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: SourcesViewHolder?, position: Int) {
         val source = mSourcesList.get(position)
         holder?.bind(source)
+        holder?.itemView?.setOnClickListener {
+            mView.onItemClick(source)
+        }
     }
 
     override fun getItemCount(): Int {

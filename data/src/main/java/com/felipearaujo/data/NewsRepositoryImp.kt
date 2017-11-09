@@ -2,6 +2,7 @@ package com.felipearaujo.data
 
 import android.arch.lifecycle.LiveData
 import com.felipearaujo.data.remote.RemoteNewsRepository
+import com.felipearaujo.model.ArticleResponse
 import com.felipearaujo.model.SourceResponse
 import javax.inject.Inject
 
@@ -13,6 +14,10 @@ class NewsRepositoryImp constructor(val remoteRepository: RemoteNewsRepository) 
     // TODO : Check connection
     override fun fetchSources(): LiveData<SourceResponse> {
         return remoteRepository.fetchSources()
+    }
+
+    override fun fetchArticles(source: String): LiveData<ArticleResponse> {
+        return remoteRepository.fetchNews(source)
     }
 
 }

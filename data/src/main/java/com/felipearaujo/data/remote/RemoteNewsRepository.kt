@@ -14,6 +14,9 @@ import retrofit2.Retrofit
  */
 class RemoteNewsRepository(private val service: NewsApiService, private val apiKet: String) {
 
+    /**
+     * Search all sources
+     */
     fun fetchSources(): MutableLiveData<SourceResponse> {
         val liveData = MutableLiveData<SourceResponse>()
 
@@ -31,6 +34,9 @@ class RemoteNewsRepository(private val service: NewsApiService, private val apiK
         return liveData
     }
 
+    /**
+     * Search all articles by source id
+     */
     fun fetchNews(source: String): MutableLiveData<ArticleResponse> {
         val liveData = MutableLiveData<ArticleResponse>()
 
