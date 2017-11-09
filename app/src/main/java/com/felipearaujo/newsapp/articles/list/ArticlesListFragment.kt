@@ -9,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.felipearaujo.data.INTENT_SOURCE
+import com.felipearaujo.model.Source
 import com.felipearaujo.newsapp.BaseFragment
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.articles.ArticlesViewModel
@@ -27,12 +29,16 @@ class ArticlesListFragment : BaseFragment() {
     @Inject
     lateinit var mAdapter: ArticlesAdapter
 
-    val mLayoutManager: LinearLayoutManager by lazy {
+    private val mLayoutManager: LinearLayoutManager by lazy {
         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
     }
 
-    val mViewModel: ArticlesViewModel by lazy {
+    private val mViewModel: ArticlesViewModel by lazy {
         ViewModelProviders.of(this, mViewModelFactory).get(ArticlesViewModel::class.java)
+    }
+
+    private val mSource: Source? by lazy {
+        activity?.intent?.getParcelableExtra<Source>(INTENT_SOURCE)
     }
 
     var mBinding: FragmentArticlesListBinding? = null
@@ -50,12 +56,14 @@ class ArticlesListFragment : BaseFragment() {
 
         mBinding?.viewModel = mViewModel
 
-        // todo remove mock
-        mViewModel.fetchArticles("the-next-web").observe(this, Observer {
-            if (it != null) {
-                mAdapter.addArticles(it)
-            }
-        })
+        if(mSource?.id != null) {
+            mViewModel.fetchArticles(mSource!!.id).observe(this, Observer {
+                if (it != null) {
+                    mAdapter.addArticles(it)
+                }
+            })
+        }
+
     }
 
     private fun configRecyclerView() {
