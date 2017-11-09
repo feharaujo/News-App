@@ -2,13 +2,16 @@ package com.felipearaujo.newsapp.sources
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.felipearaujo.model.Source
 import com.felipearaujo.newsapp.BaseActivity
 import com.felipearaujo.newsapp.R
+import com.felipearaujo.newsapp.articles.ArticlesActivity
 import com.felipearaujo.newsapp.databinding.ActivitySourcesBinding
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import javax.inject.Inject
 
@@ -66,5 +69,6 @@ class SourcesActivity : BaseActivity(), SourcesView {
      */
     override fun onItemClick(source: Source) {
         toast("source id: ${source.id}")
+        startActivity(intentFor<ArticlesActivity>())
     }
 }

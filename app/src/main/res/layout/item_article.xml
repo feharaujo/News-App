@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="source"
-            type="com.felipearaujo.model.Source" />
+            name="article"
+            type="com.felipearaujo.model.Article" />
 
     </data>
 
@@ -24,6 +24,7 @@
                 android:id="@+id/iv_img_preview"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:contentDescription="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -35,14 +36,14 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@{source.name}"
+                android:text="@{article.title}"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_img_preview"
-                tools:text="Source title" />
+                tools:text="Article title" />
 
             <TextView
                 android:id="@+id/tv_description"
@@ -51,7 +52,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@{source.description}"
+                android:text="@{article.description}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +68,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="end"
-                android:text="@{source.url}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -88,6 +88,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:ellipsize="end"
+                android:text="@{article.author}"
                 app:layout_constraintBaseline_toBaselineOf="@+id/tv_date"
                 app:layout_constraintEnd_toStartOf="@+id/guideline"
                 app:layout_constraintStart_toStartOf="parent"
