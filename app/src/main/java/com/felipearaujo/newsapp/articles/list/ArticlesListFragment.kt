@@ -48,6 +48,8 @@ class ArticlesListFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        mBinding?.viewModel = mViewModel
+
         // todo remove mock
         mViewModel.fetchArticles("the-next-web").observe(this, Observer {
             if (it != null) {
