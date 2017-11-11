@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context="com.felipearaujo.newsapp.articles.ArticlesActivity">
 
-    <fragment
-        android:id="@+id/fragment_list_articles"
-        android:name="com.felipearaujo.newsapp.articles.list.ArticlesListFragment"
+    <FrameLayout
+        android:id="@+id/fragment_articles"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 </LinearLayout>
+

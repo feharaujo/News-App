@@ -22,7 +22,7 @@ import javax.inject.Inject
 /**
  * A simple [Fragment] subclass.
  */
-class ArticlesListFragment : BaseFragment() {
+class ArticlesListFragment @Inject constructor() : BaseFragment() {
 
     @Inject
     lateinit var mViewModelFactory: ArticlesViewModelFactory
@@ -46,7 +46,7 @@ class ArticlesListFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate<FragmentArticlesListBinding>(inflater, R.layout.fragment_articles_list, container, false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_articles_list, container, false)
         configRecyclerView()
         return mBinding?.root
     }

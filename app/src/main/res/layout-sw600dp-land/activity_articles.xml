@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,11 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.35" />
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.felipearaujo.newsapp.articles.list.ArticlesListFragment"
+    <FrameLayout
+        android:id="@+id/fragment_articles"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,9 +24,8 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout="@layout/fragment_articles_list" />
 
-    <fragment
-        android:id="@+id/fragment2"
-        android:name="com.felipearaujo.newsapp.articles.webview.WebViewFragment"
+    <FrameLayout
+        android:id="@+id/fragment_webview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,3 +35,4 @@
         tools:layout="@layout/fragment_web_view" />
 
 </android.support.constraint.ConstraintLayout>
+

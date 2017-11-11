@@ -1,6 +1,5 @@
 package com.felipearaujo.newsapp.articles.webview
 
-
 import android.databinding.DataBindingUtil
 import android.os.Build
 import android.os.Bundle
@@ -8,6 +7,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
+import com.felipearaujo.newsapp.BaseFragment
 
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.databinding.FragmentWebViewBinding
@@ -16,15 +17,12 @@ import com.felipearaujo.newsapp.databinding.FragmentWebViewBinding
 /**
  * A simple [Fragment] subclass.
  */
-class WebViewFragment : Fragment() {
-
-    // TODO : Webview config
+class WebViewFragment : BaseFragment() {
 
     var mBinding: FragmentWebViewBinding? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         mBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_web_view, container, false
         )
@@ -45,7 +43,7 @@ class WebViewFragment : Fragment() {
     }
 
     /**
-     * Enable hardware render to improve the webview's performance
+     * Enable render by hardware to improve the webview's performance
      */
     private fun configWebView() {
         val webView = mBinding?.webview
@@ -56,6 +54,8 @@ class WebViewFragment : Fragment() {
             // older android version, disable hardware acceleration
             webView?.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         }
+
+        webView?.webViewClient = WebViewClient()
     }
 
 }
