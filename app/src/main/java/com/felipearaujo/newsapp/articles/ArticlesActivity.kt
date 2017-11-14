@@ -2,10 +2,11 @@ package com.felipearaujo.newsapp.articles
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.MenuItem
 import android.widget.FrameLayout
 import com.felipearaujo.data.INTENT_SOURCE
+import com.felipearaujo.model.Article
 import com.felipearaujo.model.Source
+import com.felipearaujo.newsapp.Articles
 import com.felipearaujo.newsapp.BaseActivity
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.articles.list.ArticlesListFragment
@@ -15,12 +16,17 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-class ArticlesActivity : BaseActivity(), HasSupportFragmentInjector {
+class ArticlesActivity : BaseActivity(), Articles, HasSupportFragmentInjector {
+
 
     @Inject
     lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
     @Inject
     lateinit var articlesFragment: ArticlesListFragment
+
+    private val webviewFragment by lazy {
+        WebViewFragment()
+    }
 
     private val mSource: Source by lazy {
         intent.getParcelableExtra<Source>(INTENT_SOURCE)
@@ -44,15 +50,25 @@ class ArticlesActivity : BaseActivity(), HasSupportFragmentInjector {
         transaction.replace(R.id.fragment_articles, articlesFragment)
 
         // Tablet
-        if (findViewById<FrameLayout>(R.id.fragment_webview) != null) {
-            val webviewFragment = WebViewFragment()
+        if (isTablet()) {
             transaction.replace(R.id.fragment_webview, webviewFragment)
         }
 
         transaction.commit()
     }
 
+    override fun selectedArticle(article: Article) {
+        if(isTablet()) {
+            webviewFragment.loadUrl(article.url)
+        }
+
+    }
+
     override fun supportFragmentInjector(): AndroidInjector<Fragment> {
         return fragmentDispatchingAndroidInjector
+    }
+
+    private fun isTablet(): Boolean {
+        return findViewById<FrameLayout>(R.id.fragment_webview) != null
     }
 }

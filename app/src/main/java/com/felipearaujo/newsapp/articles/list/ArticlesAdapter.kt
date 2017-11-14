@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.felipearaujo.model.Article
+import com.felipearaujo.newsapp.Articles
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.databinding.ItemArticleBinding
 import com.squareup.picasso.Picasso
@@ -12,7 +13,7 @@ import com.squareup.picasso.Picasso
 /**
  * Created by felipearaujo on 08/11/17.
  */
-class ArticlesAdapter(val mPicasso: Picasso) : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>() {
+class ArticlesAdapter(val mPicasso: Picasso, val articleView: Articles) : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>() {
 
     private val mArticlesList = ArrayList<Article>()
 
@@ -26,9 +27,9 @@ class ArticlesAdapter(val mPicasso: Picasso) : RecyclerView.Adapter<ArticlesAdap
         val article = mArticlesList.get(position)
         holder?.bind(article)
 
-        /*holder?.itemView?.setOnClickListener {
-            mView.onItemClick(article)
-        }*/
+        holder?.itemView?.setOnClickListener {
+            articleView.selectedArticle(article)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -46,6 +47,7 @@ class ArticlesAdapter(val mPicasso: Picasso) : RecyclerView.Adapter<ArticlesAdap
             itemArticleBinding.article = item
             mPicasso.load(item.urlToImage).into(itemArticleBinding.ivImgPreview)
             itemArticleBinding.executePendingBindings()
+
         }
 
     }

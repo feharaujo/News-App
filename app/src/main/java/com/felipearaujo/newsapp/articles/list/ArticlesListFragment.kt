@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.felipearaujo.data.INTENT_SOURCE
 import com.felipearaujo.model.Source
+import com.felipearaujo.newsapp.Articles
 import com.felipearaujo.newsapp.BaseFragment
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.articles.ArticlesViewModel
@@ -28,6 +29,8 @@ class ArticlesListFragment @Inject constructor() : BaseFragment() {
     lateinit var mViewModelFactory: ArticlesViewModelFactory
     @Inject
     lateinit var mAdapter: ArticlesAdapter
+    @Inject
+    lateinit var mArticles: Articles
 
     private val mLayoutManager: LinearLayoutManager by lazy {
         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
