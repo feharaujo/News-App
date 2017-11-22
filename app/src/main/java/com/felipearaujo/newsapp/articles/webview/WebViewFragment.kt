@@ -17,7 +17,7 @@ import com.felipearaujo.newsapp.databinding.FragmentWebViewBinding
 /**
  * A simple [Fragment] subclass.
  */
-class WebViewFragment : BaseFragment() {
+class WebViewFragment : Fragment() {
 
     var mBinding: FragmentWebViewBinding? = null
 
