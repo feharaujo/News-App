@@ -1,13 +1,11 @@
 package com.felipearaujo.data.remote
 
 import android.arch.lifecycle.MutableLiveData
-import android.util.Log
 import com.felipearaujo.model.ArticleResponse
 import com.felipearaujo.model.SourceResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
 
 /**
  * Created by felipearaujo on 05/11/17.

@@ -35,7 +35,6 @@ class SourcesActivity : BaseActivity(), SourcesView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sources)
 
         mBinding.viewModel = mViewModel
 

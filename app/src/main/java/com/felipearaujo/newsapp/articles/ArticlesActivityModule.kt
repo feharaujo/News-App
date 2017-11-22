@@ -1,7 +1,6 @@
 package com.felipearaujo.newsapp.articles
 
 import com.felipearaujo.newsapp.articles.list.ArticlesListFragment
-import com.felipearaujo.newsapp.articles.webview.WebViewFragment
 import dagger.Module
 import dagger.Provides
 
@@ -12,9 +11,6 @@ import dagger.Provides
 class ArticlesActivityModule {
 
     @Provides
-    fun providesArticlesFragment(): ArticlesListFragment {
-        return ArticlesListFragment()
-    }
-
+    fun providesArticlesFragment(): ArticlesListFragment = ArticlesListFragment()
 
 }

@@ -9,7 +9,7 @@ import dagger.android.AndroidInjection
  * Created by felipearaujo on 08/11/17.
  */
 @SuppressLint("Registered")
-open class BaseActivity: AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Performe injection

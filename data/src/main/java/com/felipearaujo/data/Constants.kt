@@ -17,3 +17,5 @@ const val PARAM_SOURCE = "source"
 
 // Intent params
 const val INTENT_SOURCE = "source"
+const val INTENT_ARTICLE = "article"
+const val INTENT_SOURCE_NAME = "source_name"

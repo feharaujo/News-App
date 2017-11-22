@@ -24,7 +24,7 @@ class ArticlesAdapter(val mPicasso: Picasso, val articleView: Articles) : Recycl
     }
 
     override fun onBindViewHolder(holder: ArticlesAdapter.ArticleViewHolder?, position: Int) {
-        val article = mArticlesList.get(position)
+        val article = mArticlesList[position]
         holder?.bind(article)
 
         holder?.itemView?.setOnClickListener {
@@ -32,16 +32,14 @@ class ArticlesAdapter(val mPicasso: Picasso, val articleView: Articles) : Recycl
         }
     }
 
-    override fun getItemCount(): Int {
-        return mArticlesList.size
-    }
+    override fun getItemCount(): Int = mArticlesList.size
 
     fun addArticles(newItems: List<Article>) {
         mArticlesList.addAll(newItems)
         notifyDataSetChanged()
     }
 
-    inner class ArticleViewHolder(val itemArticleBinding: ItemArticleBinding) : RecyclerView.ViewHolder(itemArticleBinding.root) {
+    inner class ArticleViewHolder(private val itemArticleBinding: ItemArticleBinding) : RecyclerView.ViewHolder(itemArticleBinding.root) {
 
         fun bind(item: Article) {
             itemArticleBinding.article = item

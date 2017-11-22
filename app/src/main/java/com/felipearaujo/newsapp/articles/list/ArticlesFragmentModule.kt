@@ -15,14 +15,12 @@ import dagger.Provides
 class ArticlesFragmentModule {
 
     @Provides
-    fun providesArticlesViewModelFactory(repository: NewsRepository): ArticlesViewModelFactory {
-        return ArticlesViewModelFactory(repository)
-    }
+    fun providesArticlesViewModelFactory(repository: NewsRepository): ArticlesViewModelFactory =
+            ArticlesViewModelFactory(repository)
 
     @Provides
-    fun providesArticlesAdapter(picasso: Picasso, articlesActivity: Articles): ArticlesAdapter {
-        return ArticlesAdapter(picasso, articlesActivity)
-    }
+    fun providesArticlesAdapter(picasso: Picasso, articlesActivity: Articles): ArticlesAdapter =
+            ArticlesAdapter(picasso, articlesActivity)
 
     @Provides
     fun providesArticlesActivity(activity: ArticlesActivity): Articles = activity

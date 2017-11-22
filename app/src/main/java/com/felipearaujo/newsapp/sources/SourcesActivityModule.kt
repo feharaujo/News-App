@@ -1,6 +1,5 @@
 package com.felipearaujo.newsapp.sources
 
-import android.arch.lifecycle.ViewModelProviders
 import com.felipearaujo.data.NewsRepository
 import dagger.Module
 import dagger.Provides
