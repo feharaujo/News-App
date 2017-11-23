@@ -11,11 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.felipearaujo.data.INTENT_SOURCE
 import com.felipearaujo.model.Source
-import com.felipearaujo.newsapp.Articles
 import com.felipearaujo.newsapp.BaseFragment
 import com.felipearaujo.newsapp.R
-import com.felipearaujo.newsapp.articles.ArticlesViewModel
-import com.felipearaujo.newsapp.articles.ArticlesViewModelFactory
 import com.felipearaujo.newsapp.databinding.FragmentArticlesListBinding
 import javax.inject.Inject
 
@@ -29,8 +26,6 @@ class ArticlesListFragment @Inject constructor() : BaseFragment() {
     lateinit var mViewModelFactory: ArticlesViewModelFactory
     @Inject
     lateinit var mAdapter: ArticlesAdapter
-    @Inject
-    lateinit var mArticles: Articles
 
     private val mLayoutManager: LinearLayoutManager by lazy {
         LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -44,7 +39,7 @@ class ArticlesListFragment @Inject constructor() : BaseFragment() {
         activity?.intent?.getParcelableExtra<Source>(INTENT_SOURCE)
     }
 
-    var mBinding: FragmentArticlesListBinding? = null
+    private var mBinding: FragmentArticlesListBinding? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -59,7 +54,7 @@ class ArticlesListFragment @Inject constructor() : BaseFragment() {
 
         mBinding?.viewModel = mViewModel
 
-        if(mSource?.id != null) {
+        if (mSource?.id != null) {
             mViewModel.fetchArticles(mSource!!.id).observe(this, Observer {
                 if (it != null) {
                     mAdapter.addArticles(it)

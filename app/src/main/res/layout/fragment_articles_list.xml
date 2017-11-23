@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.felipearaujo.newsapp.articles.ArticlesViewModel" />
+            type="com.felipearaujo.newsapp.articles.list.ArticlesViewModel" />
 
     </data>
 

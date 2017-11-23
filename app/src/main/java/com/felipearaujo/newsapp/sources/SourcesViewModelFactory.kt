@@ -10,10 +10,9 @@ import javax.inject.Singleton
  */
 @Suppress("UNCHECKED_CAST")
 @Singleton
-class SourcesViewModelFactory(val repository: NewsRepository) : ViewModelProvider.NewInstanceFactory() {
+class SourcesViewModelFactory(private val repository: NewsRepository) : ViewModelProvider.NewInstanceFactory() {
 
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return SourcesViewModel(repository) as T
-    }
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+            SourcesViewModel(repository) as T
 
 }

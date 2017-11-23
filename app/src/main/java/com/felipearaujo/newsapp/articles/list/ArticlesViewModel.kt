@@ -1,4 +1,4 @@
-package com.felipearaujo.newsapp.articles
+package com.felipearaujo.newsapp.articles.list
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
@@ -22,7 +22,7 @@ class ArticlesViewModel(private val mRepository: NewsRepository) : ViewModel() {
     val errorStateObservable = ObservableBoolean(false)
     val dataStateObservable = ObservableBoolean(false)
 
-    val mArticleResponseObserver = Observer<ArticleResponse> {
+    private val mArticleResponseObserver = Observer<ArticleResponse> {
         // cache the response value
         mCacheArticlesResponse = it
 

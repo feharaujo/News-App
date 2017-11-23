@@ -13,13 +13,13 @@ import com.squareup.picasso.Picasso
 /**
  * Created by felipearaujo on 08/11/17.
  */
-class ArticlesAdapter(val mPicasso: Picasso, val articleView: Articles) : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>() {
+class ArticlesAdapter(private val mPicasso: Picasso, private val articleView: Articles) : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>() {
 
     private val mArticlesList = ArrayList<Article>()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ArticlesAdapter.ArticleViewHolder {
         val inflater = LayoutInflater.from(parent?.context)
-        val binding = DataBindingUtil.inflate<ItemArticleBinding>(inflater, R.layout.item_article, parent, false);
+        val binding = DataBindingUtil.inflate<ItemArticleBinding>(inflater, R.layout.item_article, parent, false)
         return ArticleViewHolder(binding)
     }
 

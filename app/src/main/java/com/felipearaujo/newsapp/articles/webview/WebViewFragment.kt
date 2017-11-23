@@ -8,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
-import com.felipearaujo.newsapp.BaseFragment
-
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.databinding.FragmentWebViewBinding
 
@@ -19,7 +17,7 @@ import com.felipearaujo.newsapp.databinding.FragmentWebViewBinding
  */
 class WebViewFragment : Fragment() {
 
-    var mBinding: FragmentWebViewBinding? = null
+    private var mBinding: FragmentWebViewBinding? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

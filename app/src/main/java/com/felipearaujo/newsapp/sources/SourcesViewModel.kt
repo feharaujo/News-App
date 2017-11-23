@@ -22,7 +22,7 @@ class SourcesViewModel(private val mRepository: NewsRepository) : ViewModel() {
     val errorStateObservable = ObservableBoolean(false)
     val dataStateObservable = ObservableBoolean(false)
 
-    val mSourceResponseObserver = Observer<SourceResponse> {
+    private val mSourceResponseObserver = Observer<SourceResponse> {
         // cache the response value
         mCacheSourcesResponse = it
 
