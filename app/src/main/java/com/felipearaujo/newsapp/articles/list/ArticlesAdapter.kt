@@ -9,10 +9,13 @@ import com.felipearaujo.newsapp.Articles
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.databinding.ItemArticleBinding
 import com.squareup.picasso.Picasso
+import java.util.*
 
 /**
  * Created by felipearaujo on 08/11/17.
  */
+
+
 class ArticlesAdapter(private val mPicasso: Picasso, private val articleView: Articles) : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>() {
 
     private val mArticlesList = ArrayList<Article>()
@@ -42,12 +45,27 @@ class ArticlesAdapter(private val mPicasso: Picasso, private val articleView: Ar
     inner class ArticleViewHolder(private val itemArticleBinding: ItemArticleBinding) : RecyclerView.ViewHolder(itemArticleBinding.root) {
 
         fun bind(item: Article) {
-            itemArticleBinding.article = item
-            mPicasso.load(item.urlToImage).into(itemArticleBinding.ivImgPreview)
-            itemArticleBinding.executePendingBindings()
+            val date = item.publishedAt ?: Date(Long.MIN_VALUE)
+            val description = item.description ?: ""
+            val urlToImage = item.urlToImage ?: ""
+            val url = item.url ?: ""
+            val author = item.author ?: ""
+            val title = item.title ?: ""
 
+            val bindingItem = Article(
+                    title,
+                    description,
+                    url,
+                    urlToImage,
+                    date,
+                    author
+            )
+
+            itemArticleBinding.article = bindingItem
+            itemArticleBinding.executePendingBindings()
         }
 
     }
 
 }
+

@@ -72,7 +72,10 @@ class ArticlesActivity : BaseActivity(), Articles, HasSupportFragmentInjector {
 
     override fun selectedArticle(article: Article) {
         if (isTablet()) {
-            webviewFragment.loadUrl(article.url)
+            val url = article.url
+            if (url != null) {
+                webviewFragment.loadUrl(url)
+            }
         } else {
             startActivity(intentFor<WebViewActivity>(INTENT_ARTICLE to article, INTENT_SOURCE_NAME to mSource.name))
         }

@@ -25,7 +25,7 @@ class RemoteNewsRepository(private val service: NewsApiService, private val apiK
             }
 
             override fun onFailure(call: Call<SourceResponse>?, t: Throwable?) {
-                liveData.value = SourceResponse(null, null, t)
+                liveData.value = SourceResponse( null, t)
             }
         })
 
@@ -45,7 +45,7 @@ class RemoteNewsRepository(private val service: NewsApiService, private val apiK
             }
 
             override fun onFailure(call: Call<ArticleResponse>?, t: Throwable?) {
-                liveData.value = ArticleResponse(null, null, null, t)
+                liveData.value = ArticleResponse( null, null, t)
             }
         })
 

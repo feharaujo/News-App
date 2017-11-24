@@ -54,8 +54,9 @@ class ArticlesListFragment @Inject constructor() : BaseFragment() {
 
         mBinding?.viewModel = mViewModel
 
-        if (mSource?.id != null) {
-            mViewModel.fetchArticles(mSource!!.id).observe(this, Observer {
+        val sourceId = mSource?.id
+        if (sourceId != null) {
+            mViewModel.fetchArticles(sourceId).observe(this, Observer {
                 if (it != null) {
                     mAdapter.addArticles(it)
                 }

@@ -4,14 +4,19 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModel
+import android.databinding.BindingAdapter
 import android.databinding.ObservableBoolean
+import android.widget.ImageView
 import com.felipearaujo.data.NewsRepository
 import com.felipearaujo.model.Article
 import com.felipearaujo.model.ArticleResponse
+import com.squareup.picasso.Picasso
 
 /**
  * Created by felipearaujo on 08/11/17.
  */
+
+
 class ArticlesViewModel(private val mRepository: NewsRepository) : ViewModel() {
 
     private val mArticlesLiveData = MediatorLiveData<List<Article>>()
