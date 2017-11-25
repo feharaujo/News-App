@@ -11,10 +11,10 @@ import java.util.*
 @SuppressLint("ParcelCreator")
 @Parcelize
 data class Article(
-        val title: String?,
-        val description: String?,
-        val url: String?,
-        val urlToImage: String?,
-        val publishedAt: Date?,
-        val author: String?
+        val title: String,
+        val description: String,
+        val url: String,
+        val urlToImage: String,
+        val publishedAt: Date,
+        val author: String
 ) : Parcelable

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.webkit.WebViewClient
 import com.felipearaujo.newsapp.R
 import com.felipearaujo.newsapp.databinding.FragmentWebViewBinding
@@ -30,7 +31,15 @@ class WebViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        configWebView()
+        mBinding?.loading = false
+
+        configWebView(mBinding?.webview)
+        mBinding?.webview?.webViewClient = object : WebViewClient() {
+
+            override fun onPageFinished(view: WebView, url: String) {
+                mBinding?.loading = false
+            }
+        }
     }
 
     /**
@@ -38,13 +47,13 @@ class WebViewFragment : Fragment() {
      */
     fun loadUrl(url: String) {
         mBinding?.webview?.loadUrl(url)
+        mBinding?.loading = true
     }
 
     /**
      * Enable render by hardware to improve the webview's performance
      */
-    private fun configWebView() {
-        val webView = mBinding?.webview
+    private fun configWebView(webView: WebView?) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             // chromium, enable hardware acceleration
             webView?.setLayerType(View.LAYER_TYPE_HARDWARE, null)

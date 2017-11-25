@@ -5,8 +5,12 @@ import com.felipearaujo.data.BuildConfig
 import com.felipearaujo.data.NewsRepository
 import com.felipearaujo.data.NewsRepositoryImp
 import com.felipearaujo.data.URL_BASE
+import com.felipearaujo.data.remote.ArticleDeserializer
 import com.felipearaujo.data.remote.NewsApiService
 import com.felipearaujo.data.remote.RemoteNewsRepository
+import com.felipearaujo.model.Article
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
@@ -22,11 +26,18 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesRetrofit(): Retrofit =
-            Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(URL_BASE)
-                    .build()
+    fun prividesGson(): Gson {
+        val gson = GsonBuilder().registerTypeAdapter(Article::class.java, ArticleDeserializer())
+        return gson.create()
+    }
+
+    @Provides
+    @Singleton
+    fun providesRetrofit(gson: Gson): Retrofit = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .baseUrl(URL_BASE)
+            .build()
+
 
     @Provides
     @Singleton
