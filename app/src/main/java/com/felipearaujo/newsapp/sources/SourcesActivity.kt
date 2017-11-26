@@ -63,7 +63,7 @@ class SourcesActivity : BaseActivity(), SourcesView {
     }
 
     /**
-     * Source cell click
+     * SourceLocal cell click
      */
     override fun onItemClick(source: Source) {
         startActivity(intentFor<ArticlesActivity>(INTENT_SOURCE to source))

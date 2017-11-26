@@ -7,11 +7,11 @@ import io.realm.annotations.PrimaryKey
 /**
  * Created by felipearaujo on 26/11/17.
  */
-open class Source : RealmObject() {
+open class SourceLocal : RealmObject() {
     @PrimaryKey
     var id: String? = null
     var name: String? = null
     var description: String? = null
     var url: String? = null
-    var articles: RealmList<Article>? = null
+    var articles: RealmList<ArticleLocal>? = null
 }

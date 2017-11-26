@@ -7,7 +7,7 @@ import java.util.*
 /**
  * Created by felipearaujo on 26/11/17.
  */
-open class Article : RealmObject() {
+open class ArticleLocal : RealmObject() {
     @PrimaryKey
     var id: Int? = null
     var title: String? = null

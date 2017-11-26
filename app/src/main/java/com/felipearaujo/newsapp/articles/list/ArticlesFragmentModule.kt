@@ -3,7 +3,6 @@ package com.felipearaujo.newsapp.articles.list
 import com.felipearaujo.data.NewsRepository
 import com.felipearaujo.newsapp.Articles
 import com.felipearaujo.newsapp.articles.ArticlesActivity
-import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
 
@@ -18,8 +17,8 @@ class ArticlesFragmentModule {
             ArticlesViewModelFactory(repository)
 
     @Provides
-    fun providesArticlesAdapter(picasso: Picasso, articlesActivity: Articles): ArticlesAdapter =
-            ArticlesAdapter(picasso, articlesActivity)
+    fun providesArticlesAdapter(articlesActivity: Articles): ArticlesAdapter =
+            ArticlesAdapter(articlesActivity)
 
     @Provides
     fun providesArticlesActivity(activity: ArticlesActivity): Articles = activity

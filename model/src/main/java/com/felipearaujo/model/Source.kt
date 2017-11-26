@@ -11,8 +11,8 @@ import kotlinx.android.parcel.Parcelize
 @SuppressLint("ParcelCreator")
 @Parcelize
 data class Source(
-        val id: String?,
-        val name: String?,
-        val description: String?,
-        val url: String?
+        val id: String,
+        val name: String,
+        val description: String,
+        val url: String
 ): Parcelable

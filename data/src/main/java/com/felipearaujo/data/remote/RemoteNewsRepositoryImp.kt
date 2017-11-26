@@ -11,10 +11,10 @@ import retrofit2.Response
 /**
  * Created by felipearaujo on 05/11/17.
  */
-class RemoteNewsRepository(
+class RemoteNewsRepositoryImp(
         private val service: NewsApiService,
         private val apiKet: String
-) : NewsRepository {
+) : RemoteNewsRepository {
 
     /**
      * Search all sources
