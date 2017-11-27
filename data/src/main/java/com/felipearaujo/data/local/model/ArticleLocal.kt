@@ -2,6 +2,7 @@ package com.felipearaujo.data.local.model
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import io.realm.annotations.Required
 import java.util.*
 
 /**
@@ -9,6 +10,7 @@ import java.util.*
  */
 open class ArticleLocal : RealmObject() {
     @PrimaryKey
+    @Required
     var id: Int? = null
     var title: String? = null
     var description: String? = null

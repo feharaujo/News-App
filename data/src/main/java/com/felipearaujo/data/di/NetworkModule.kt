@@ -64,8 +64,8 @@ class NetworkModule {
      */
     @Provides
     @Singleton
-    fun providesRemoteNewsRepository(service: NewsApiService): RemoteNewsRepository =
-            RemoteNewsRepositoryImp(service, BuildConfig.API_KEY)
+    fun providesRemoteNewsRepository(service: NewsApiService, localRepository: LocalNewsRepository): RemoteNewsRepository =
+            RemoteNewsRepositoryImp(service, BuildConfig.API_KEY, localRepository)
 
     /**
      * Local repository
@@ -81,7 +81,10 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesRealm(): Realm = Realm.getDefaultInstance()
+    fun providesRealm(appContext: Context): Realm {
+        Realm.init(appContext)
+        return Realm.getDefaultInstance()
+    }
 
 
 }

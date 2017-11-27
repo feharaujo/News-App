@@ -1,7 +1,7 @@
 package com.felipearaujo.data.remote
 
 import android.arch.lifecycle.MutableLiveData
-import com.felipearaujo.data.NewsRepository
+import com.felipearaujo.data.local.LocalNewsRepository
 import com.felipearaujo.model.ArticleResponse
 import com.felipearaujo.model.SourceResponse
 import retrofit2.Call
@@ -13,7 +13,8 @@ import retrofit2.Response
  */
 class RemoteNewsRepositoryImp(
         private val service: NewsApiService,
-        private val apiKet: String
+        private val apiKet: String,
+        private val localNewsRepository: LocalNewsRepository
 ) : RemoteNewsRepository {
 
     /**
@@ -25,7 +26,12 @@ class RemoteNewsRepositoryImp(
         val call = service.fetchSources()
         call.enqueue(object : Callback<SourceResponse> {
             override fun onResponse(call: Call<SourceResponse>?, response: Response<SourceResponse>?) {
-                liveData.value = response?.body()
+                val responseBody = response?.body()
+                val sources = responseBody?.sources
+                if (sources != null) {
+                    localNewsRepository.saveSources(sources)
+                }
+                liveData.value = responseBody
             }
 
             override fun onFailure(call: Call<SourceResponse>?, t: Throwable?) {
@@ -45,6 +51,11 @@ class RemoteNewsRepositoryImp(
         val call = service.fetchArticles(apiKet, source)
         call.enqueue(object : Callback<ArticleResponse> {
             override fun onResponse(call: Call<ArticleResponse>?, response: Response<ArticleResponse>?) {
+                val responseBody = response?.body()
+                val articles = responseBody?.articles
+                if (articles != null) {
+                    localNewsRepository.saveArticles(source, articles)
+                }
                 liveData.value = response?.body()
             }
 

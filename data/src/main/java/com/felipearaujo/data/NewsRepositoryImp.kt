@@ -19,10 +19,6 @@ class NewsRepositoryImp constructor(
         private val localRepository: LocalNewsRepository
 ) : NewsRepository {
 
-    init {
-        Realm.init(appContext)
-    }
-
     override fun fetchSources(): LiveData<SourceResponse> {
         if (isNetworkConnected()) {
             return remoteRepository.fetchSources()

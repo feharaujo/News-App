@@ -46,9 +46,7 @@ class WebViewActivity : BaseActivity(), HasSupportFragmentInjector {
         super.onResume()
 
         val url = mArticle.url
-        if (url != null) {
-            webViewFragment.loadUrl(url)
-        }
+        webViewFragment.loadUrl(url)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

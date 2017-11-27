@@ -13,8 +13,4 @@ interface LocalNewsRepository : NewsRepository {
 
     fun saveArticles(id: String, articles: List<Article>)
 
-    fun deleteAllSources()
-
-    fun deleteAllArticles()
-
 }
