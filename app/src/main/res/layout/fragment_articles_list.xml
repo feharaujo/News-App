@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_margin="24dp"
             android:gravity="center"
-            android:text="@string/error_not_fetch_data"
+            android:text="@string/error_not_fetch_data_choose_source"
             android:visibility="@{viewModel.errorStateObservable ? View.VISIBLE : View.GONE}" />
 
     </RelativeLayout>

@@ -5,15 +5,19 @@ import com.felipearaujo.data.BuildConfig
 import com.felipearaujo.data.NewsRepository
 import com.felipearaujo.data.NewsRepositoryImp
 import com.felipearaujo.data.URL_BASE
+import com.felipearaujo.data.local.LocalNewsRepository
+import com.felipearaujo.data.local.LocalNewsRepositoryImp
 import com.felipearaujo.data.remote.ArticleDeserializer
 import com.felipearaujo.data.remote.NewsApiService
 import com.felipearaujo.data.remote.RemoteNewsRepository
+import com.felipearaujo.data.remote.RemoteNewsRepositoryImp
 import com.felipearaujo.model.Article
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
+import io.realm.Realm
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -46,17 +50,41 @@ class NetworkModule {
                     .loggingEnabled(true)
                     .build()
 
+    /**
+     * Repository (local and remote)
+     */
     @Provides
     @Singleton
-    fun providesRemoteNewsRepository(service: NewsApiService): RemoteNewsRepository =
-            RemoteNewsRepository(service, BuildConfig.API_KEY)
+    fun providesNewsRepository(
+            appContext: Context, remote: RemoteNewsRepository, local: LocalNewsRepository
+    ): NewsRepository = NewsRepositoryImp(appContext, remote, local)
 
+    /**
+     * Remote repository
+     */
     @Provides
     @Singleton
-    fun providesNewsRepository(remote: RemoteNewsRepository): NewsRepository = NewsRepositoryImp(remote)
+    fun providesRemoteNewsRepository(service: NewsApiService, localRepository: LocalNewsRepository): RemoteNewsRepository =
+            RemoteNewsRepositoryImp(service, BuildConfig.API_KEY, localRepository)
+
+    /**
+     * Local repository
+     */
+    @Provides
+    @Singleton
+    fun providesLocalNewsRepository(realm: Realm): LocalNewsRepository = LocalNewsRepositoryImp(realm)
+
 
     @Provides
     @Singleton
     fun providesNewsApiService(retrofit: Retrofit): NewsApiService = retrofit.create(NewsApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun providesRealm(appContext: Context): Realm {
+        Realm.init(appContext)
+        return Realm.getDefaultInstance()
+    }
+
 
 }

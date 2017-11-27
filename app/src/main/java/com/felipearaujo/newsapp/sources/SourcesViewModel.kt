@@ -27,7 +27,7 @@ class SourcesViewModel(private val mRepository: NewsRepository) : ViewModel() {
         mCacheSourcesResponse = it
 
         // if there sources
-        if (it?.sources != null) {
+        if (it?.sources != null && it.sources?.size!! > 0) {
             mSourcesLiveData.value = it.sources
             notifyDataView()
         } else {
@@ -38,7 +38,7 @@ class SourcesViewModel(private val mRepository: NewsRepository) : ViewModel() {
     fun fetchSources(): LiveData<List<Source>> {
         notifyLoadingView()
 
-        if (mCacheSourcesResponse?.sources != null) {
+        if (mCacheSourcesResponse?.sources != null && mCacheSourcesResponse?.sources?.size!! > 0) {
             mSourcesLiveData.postValue(mCacheSourcesResponse?.sources)
             notifyDataView()
         } else {
