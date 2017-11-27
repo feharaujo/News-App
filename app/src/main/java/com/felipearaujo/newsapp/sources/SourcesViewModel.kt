@@ -38,6 +38,7 @@ class SourcesViewModel(private val mRepository: NewsRepository) : ViewModel() {
     fun fetchSources(): LiveData<List<Source>> {
         notifyLoadingView()
 
+        // cache data
         if (mCacheSourcesResponse?.sources != null && mCacheSourcesResponse?.sources?.size!! > 0) {
             mSourcesLiveData.postValue(mCacheSourcesResponse?.sources)
             notifyDataView()

@@ -98,10 +98,10 @@ class LocalNewsRepositoryImp(private val realm: Realm) : LocalNewsRepository {
 
     private fun getPrimaryKeyNumber(realm: Realm) : Int {
         val nextID = realm.where(ArticleLocal::class.java).max("id")
-        if (nextID == null) {
-            return 0
+        return if (nextID == null) {
+            0
         } else {
-            return nextID.toInt() + 1
+            nextID.toInt() + 1
         }
     }
 }

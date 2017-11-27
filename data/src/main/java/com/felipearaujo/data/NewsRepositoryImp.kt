@@ -7,7 +7,6 @@ import com.felipearaujo.data.local.LocalNewsRepository
 import com.felipearaujo.data.remote.RemoteNewsRepository
 import com.felipearaujo.model.ArticleResponse
 import com.felipearaujo.model.SourceResponse
-import io.realm.Realm
 
 
 /**
@@ -20,18 +19,18 @@ class NewsRepositoryImp constructor(
 ) : NewsRepository {
 
     override fun fetchSources(): LiveData<SourceResponse> {
-        if (isNetworkConnected()) {
-            return remoteRepository.fetchSources()
+        return if (isNetworkConnected()) {
+            remoteRepository.fetchSources()
         } else {
-            return localRepository.fetchSources()
+            localRepository.fetchSources()
         }
     }
 
     override fun fetchArticles(source: String): LiveData<ArticleResponse> {
-        if (isNetworkConnected()) {
-            return remoteRepository.fetchArticles(source)
+        return if (isNetworkConnected()) {
+            remoteRepository.fetchArticles(source)
         } else {
-            return localRepository.fetchArticles(source)
+            localRepository.fetchArticles(source)
 
         }
     }

@@ -27,6 +27,7 @@ class ArticlesActivity : BaseActivity(), Articles, HasSupportFragmentInjector {
     @Inject
     lateinit var articlesFragment: ArticlesListFragment
 
+    // not injected by dagger because in phones this fragment is not used
     private val webviewFragment by lazy {
         WebViewFragment()
     }
