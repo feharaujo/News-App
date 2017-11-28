@@ -33,6 +33,7 @@ The project has three layers
 - The UI layer makes use of the MVVM pattern to communicate between View and ViewModel.
 - The UI makes use of the Architecture Components library to be lifecycle-aware.
 - The View make use of Data binding to control your states linked in the ViewModel (by observables), making possible a reactive approach to view communication.
+- The UI is responsive (smartphones, tablets, portrait and landscape).
 - The Data layer makes use of the Repository pattern to control the remote and local data.
 - When the app receives data from the remote API, the local realm database is updated, making possible use the app offline.
 - The main Repository class receives the Remote and Local implementation by dependency injection.
