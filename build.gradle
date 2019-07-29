@@ -6,7 +6,7 @@ buildscript {
     ext.anko_version = '0.10.1'
     ext.support_lib_version = '27.0.1'
     ext.constraint_layout_version = '1.0.2'
-    ext.dagger_version = '2.11'
+    ext.dagger_version = '2.15'
     ext.architecture_components_version = '1.0.0'
     ext.architecture_components_extension_version = '1.0.0'
     ext.architecture_components_core_testing_version = '1.0.0'
