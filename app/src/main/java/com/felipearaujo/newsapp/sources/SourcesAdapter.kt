@@ -16,16 +16,16 @@ class SourcesAdapter(private val mView: SourcesView) : RecyclerView.Adapter<Sour
 
     private val mSourcesList = ArrayList<Source>()
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): SourcesViewHolder {
-        val inflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SourcesViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<ItemSourceBinding>(inflater, R.layout.item_source, parent, false)
         return SourcesViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: SourcesViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: SourcesViewHolder, position: Int) {
         val source = mSourcesList[position]
-        holder?.bind(source)
-        holder?.itemView?.setOnClickListener {
+        holder.bind(source)
+        holder.itemView?.setOnClickListener {
             mView.onItemClick(source)
         }
     }

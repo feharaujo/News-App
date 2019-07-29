@@ -10,10 +10,11 @@ android {
 
     defaultConfig {
         applicationId "com.felipearaujo.newsapp"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

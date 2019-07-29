@@ -19,17 +19,17 @@ class ArticlesAdapter(private val articleView: Articles) : RecyclerView.Adapter<
 
     private val mArticlesList = ArrayList<Article>()
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ArticlesAdapter.ArticleViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
         val inflater = LayoutInflater.from(parent?.context)
         val binding = DataBindingUtil.inflate<ItemArticleBinding>(inflater, R.layout.item_article, parent, false)
         return ArticleViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ArticlesAdapter.ArticleViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = mArticlesList[position]
-        holder?.bind(article)
+        holder.bind(article)
 
-        holder?.itemView?.setOnClickListener {
+        holder.itemView?.setOnClickListener {
             articleView.selectedArticle(article)
         }
     }
