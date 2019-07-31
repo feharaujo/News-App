@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/feharaujo/News-App.svg?branch=develop)](https://travis-ci.org/feharaujo/News-App)
+
 # News App
 Android implementation of the News Api (https://newsapi.org)
 
