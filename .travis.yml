@@ -6,10 +6,10 @@ env:
   global:
     - ANDROID_API_LEVEL=27
     - TARGET_VERSION=27
-    - ANDROID_EMULATOR_LEVEL=24
+    - ANDROID_EMULATOR_LEVEL=28
     - ANDROID_BUILD_TOOLS_VERSION=29.0.0
     - ADB_INSTALL_TIMEOUT=5
-    - ANDROID_ABI=armeabi-v7a
+    - ANDROID_ABI=x86
     - ANDROID_TAG=google_apis
     - QEMU_AUDIO_DRV=none
 
@@ -49,8 +49,8 @@ before_install:
   - yes | sdkmanager --licenses
   - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
   - sdkmanager --list | head -15
-  - sdkmanager "build-tools;29.0.0" "platforms;android-27" > /dev/null
-  - sdkmanager "system-images;android-$ANDROID_EMULATOR_LEVEL;$ANDROID_ABI" > /dev/null
+  - sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
+  - sdkmanager "system-images;android-$ANDROID_EMULATOR_LEVEL;$ANDROID_TAG;$ANDROID_ABI" > /dev/null
   - sdkmanager --list | head -15
   - yes | sdkmanager "cmake;3.10.2.4988404"
   - wget https://dl.google.com/android/repository/android-ndk-r18b-linux-x86_64.zip
