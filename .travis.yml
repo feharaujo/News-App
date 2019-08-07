@@ -63,6 +63,8 @@ before_install:
   - echo no | avdmanager create avd --force -n test -k "system-images;android-$ANDROID_EMULATOR_LEVEL;$ANDROID_TAG;$ANDROID_ABI"
 
 script:
+  - android update sdk --no-ui --all --filter build-tools-29.0.0,android-29,extra-android-m2repository
+  - android update sdk --no-ui --all --filter build-tools-27.0.1,android-27,extra-android-m2repository
   - android list targets
   - echo no | android create avd --force -n test -t "android-"$ANDROID_EMULATOR_LEVEL --abi $ANDROID_ABI --tag $ANDROID_TAG
   - emulator -avd test -no-window &
