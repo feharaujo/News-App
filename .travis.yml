@@ -47,22 +47,18 @@ before_install:
   - touch ~/.android/repositories.cfg
   - yes | sdkmanager --update
   - yes | sdkmanager --licenses
-  - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+  - yes | sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+  - yes | sdkmanager --list | head -15
+  - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
+  - yes | sdkmanager "system-images;android-$ANDROID_EMULATOR_LEVEL;$ANDROID_TAG;$ANDROID_ABI" > /dev/null
   - sdkmanager --list | head -15
-  - sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
-  - sdkmanager "system-images;android-$ANDROID_EMULATOR_LEVEL;$ANDROID_TAG;$ANDROID_ABI" > /dev/null
-  - sdkmanager --list | head -15
-  - yes | sdkmanager "cmake;3.10.2.4988404"
-  - wget https://dl.google.com/android/repository/android-ndk-r18b-linux-x86_64.zip
-  - unzip android-ndk-r18b-linux-x86_64.zip -d $HOME > /dev/null
-  - export ANDROID_NDK_HOME=$HOME/android-ndk-r18b
-  - export PATH=$PATH:$ANDROID_NDK_HOME
   - mkdir "$ANDROID_HOME/licenses" || true
   - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
   - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
   - echo no | avdmanager create avd --force -n test -k "system-images;android-$ANDROID_EMULATOR_LEVEL;$ANDROID_TAG;$ANDROID_ABI"
 
 script:
+  - echo "Starting script section"
   - yes | sdkmanager "platform-tools" "platforms;android-27"
   - android list target
   - emulator -avd test -no-window &
