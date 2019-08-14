@@ -7,7 +7,7 @@ env:
     - ANDROID_API_LEVEL=27
     - TARGET_VERSION=27
     - ANDROID_EMULATOR_LEVEL=25
-    - ANDROID_BUILD_TOOLS_VERSION=29.0.0
+    - ANDROID_BUILD_TOOLS_VERSION=29.0.2
     - ADB_INSTALL_TIMEOUT=30
     - ANDROID_ABI=x86
     - ANDROID_TAG=google_apis
@@ -51,8 +51,8 @@ before_install:
   - PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
   - mkdir -p ~/.android
   - touch ~/.android/repositories.cfg
-  - echo "yes" | sdkmanager --update
-  - echo "yes" | sdkmanager --licenses
+  - yes | sdkmanager --update
+  - yes | sdkmanager --licenses
 #  - echo "yes" | sdkmanager "platform-tools" "platforms;android-29"
   - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
 #  - sdkmanager --list | head -15
