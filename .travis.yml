@@ -47,10 +47,10 @@ before_install:
   - mkdir -p ~/.android
   - touch ~/.android/repositories.cfg
   - echo " **************** ACCEPT LICENSES ****************  "
-  - yes | sdkmanager --update
+  - sdkmanager --update
   - yes | sdkmanager --licenses
-  - yes | sdkmanager "emulator" "tools" "platform-tools" > /dev/null
-  - yes | sdkmanager --list | head -15
+  - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+  - sdkmanager --list | head -15
   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
   - yes | sdkmanager "system-images;android-$ANDROID_EMULATOR_LEVEL;$ANDROID_TAG;$ANDROID_ABI" > /dev/null
   - sdkmanager --list | head -15
