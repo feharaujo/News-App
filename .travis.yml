@@ -46,9 +46,9 @@ before_install:
   - PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
   - mkdir -p ~/.android
   - touch ~/.android/repositories.cfg
-  - echo "**************** ACCEPT LICENSES **************** "
-  - yes | sdkmanager --licenses
+  - echo " **************** ACCEPT LICENSES ****************  "
   - yes | sdkmanager --update
+  - yes | sdkmanager --licenses
   - yes | sdkmanager "emulator" "tools" "platform-tools" > /dev/null
   - yes | sdkmanager --list | head -15
   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
@@ -62,8 +62,10 @@ before_install:
 script:
   - echo "**************** SCRIPT **************** "
   - echo "Starting script section"
+  - yes | sdkmanager --update
   - yes | sdkmanager --licenses
   - yes | sdkmanager "platform-tools" "platforms;android-27"
+  - yes | sdkmanager "platform-tools" "platforms;android-29"
   - android list target
   - emulator -avd "android-27" -no-window &
   - mkdir -p build/reports
