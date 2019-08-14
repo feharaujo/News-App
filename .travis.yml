@@ -47,7 +47,7 @@ before_install:
   - mkdir -p ~/.android
   - touch ~/.android/repositories.cfg
   - echo " **************** ACCEPT LICENSES ****************  "
-  - y | sdkmanager --update
+  - yes | sdkmanager --update
   - yes | sdkmanager --licenses
   - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
   - sdkmanager --list | head -15
