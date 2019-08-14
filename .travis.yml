@@ -30,6 +30,8 @@ licenses:
   - android-sdk-preview-license-.+
   - android-sdk-license-.+
   - google-gdk-license-.+
+  - android-googletv-license-.+
+  - mips-android-sysimage-license-.+
 
 cache:
   directories:
@@ -50,10 +52,10 @@ before_install:
   - yes | sdkmanager --update
   - yes | sdkmanager --licenses
   - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
-  - sdkmanager --list | head -15
+#  - sdkmanager --list | head -15
   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
   - yes | sdkmanager "system-images;android-$ANDROID_EMULATOR_LEVEL;$ANDROID_TAG;$ANDROID_ABI" > /dev/null
-  - sdkmanager --list | head -15
+#  - sdkmanager --list | head -15
   - mkdir "$ANDROID_HOME/licenses" || true
   - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
   - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
