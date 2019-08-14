@@ -51,7 +51,7 @@ before_install:
   - touch ~/.android/repositories.cfg
   - echo "yes" | sdkmanager --update
   - echo "yes" | sdkmanager --licenses
-  - echo "yes" | sdkmanager "platform-tools" "platforms;android-29"
+#  - echo "yes" | sdkmanager "platform-tools" "platforms;android-29"
   - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
 #  - sdkmanager --list | head -15
   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
@@ -68,7 +68,7 @@ script:
   - echo "Starting script section"
   - yes | sdkmanager --update
   - yes | sdkmanager --licenses
-#  - yes | sdkmanager "platform-tools" "platforms;android-27"
+  - yes | sdkmanager "platform-tools" "platforms;android-27"
 #  - yes | sdkmanager "platform-tools" "platforms;android-29"
   - android list target
   - emulator -avd "android-27" -no-window &
