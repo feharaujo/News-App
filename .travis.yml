@@ -1,5 +1,5 @@
 language: android
-sudo: false
+sudo: true
 jdk: oraclejdk8
 
 env:
@@ -45,6 +45,8 @@ cache:
 
 before_install:
   - echo "**************** before_install **************** "
+  - chmod +x sdkmanager-accept-licenses.sh
+  - chmod +x sdkmanager-update-accept-all-licenses.sh
   - cat $HOME/.m2/settings.xml
   - export ANDROID_HOME=~/android-sdk-linux
   - wget -q "https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" -O android-sdk-tools.zip
