@@ -45,8 +45,8 @@ cache:
 
 before_install:
   - echo "**************** before_install **************** "
-  - ./sdkmanager-update-accept-all-licenses.sh
-  - ./sdkmanager-accept-licenses.sh
+  - chmod +x sdkmanager-accept-licenses.sh
+  - chmod +x sdkmanager-update-accept-all-licenses.sh
   - cat $HOME/.m2/settings.xml
   - export ANDROID_HOME=~/android-sdk-linux
   - wget -q "https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" -O android-sdk-tools.zip
@@ -55,8 +55,8 @@ before_install:
   - PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
   - mkdir -p ~/.android
   - touch ~/.android/repositories.cfg
-  - ./sdkmanager-accept-licenses.sh
   - ./sdkmanager-update-accept-all-licenses.sh
+  - ./sdkmanager-accept-licenses.sh
   - sdkmanager --list --verbose
 #  - echo "yes" | sdkmanager "platform-tools" "platforms;android-29"
 #  - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
