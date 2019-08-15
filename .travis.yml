@@ -1,5 +1,5 @@
 language: android
-sudo: true
+sudo: false
 jdk: oraclejdk8
 
 env:
@@ -53,8 +53,8 @@ before_install:
   - PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
   - mkdir -p ~/.android
   - touch ~/.android/repositories.cfg
-  - sudo ./sdkmanager-accept-licenses.sh
-  - sudo ./sdkmanager-update-accept-all-licenses.sh
+  - ./sdkmanager-accept-licenses.sh
+  - ./sdkmanager-update-accept-all-licenses.sh
   - sdkmanager --list --verbose
 #  - echo "yes" | sdkmanager "platform-tools" "platforms;android-29"
   - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
@@ -72,8 +72,8 @@ script:
   - echo "**************** SCRIPT **************** "
   - echo "Starting script section"
   - yes | sdkmanager --update
-  - sudo ./sdkmanager-accept-licenses.sh
-  - sudo ./sdkmanager-update-accept-all-licenses.sh
+  - ./sdkmanager-accept-licenses.sh
+  - ./sdkmanager-update-accept-all-licenses.sh
   - yes | sdkmanager "platform-tools" "platforms;android-27"
 #  - yes | sdkmanager "platform-tools" "platforms;android-28"
   - android list target
