@@ -55,7 +55,7 @@ before_install:
   - touch ~/.android/repositories.cfg
   - yes | sdkmanager --include_obsolete --update
   - yes | sdkmanager --licenses
-  - sdkmanager --list verbose
+  - sdkmanager --list --verbose
 #  - echo "yes" | sdkmanager "platform-tools" "platforms;android-29"
   - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
 #  - sdkmanager --list | head -15
