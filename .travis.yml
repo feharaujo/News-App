@@ -45,8 +45,8 @@ cache:
 
 before_install:
   - echo "**************** before_install **************** "
-  - chmod +x sdkmanager-accept-licenses.sh
-  - chmod +x sdkmanager-update-accept-all-licenses.sh
+  - ./sdkmanager-update-accept-all-licenses.sh
+  - ./sdkmanager-accept-licenses.sh
   - cat $HOME/.m2/settings.xml
   - export ANDROID_HOME=~/android-sdk-linux
   - wget -q "https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" -O android-sdk-tools.zip
@@ -59,7 +59,7 @@ before_install:
   - ./sdkmanager-update-accept-all-licenses.sh
   - sdkmanager --list --verbose
 #  - echo "yes" | sdkmanager "platform-tools" "platforms;android-29"
-  - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+#  - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
 #  - sdkmanager --list | head -15
 #  - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" "extras;google;m2repository" "extras;android;m2repository"
@@ -73,9 +73,9 @@ before_install:
 script:
   - echo "**************** SCRIPT **************** "
   - echo "Starting script section"
-  - yes | sdkmanager --update
-  - ./sdkmanager-accept-licenses.sh
+#  - yes | sdkmanager --update
   - ./sdkmanager-update-accept-all-licenses.sh
+  - ./sdkmanager-accept-licenses.sh
   - yes | sdkmanager "platform-tools" "platforms;android-27"
 #  - yes | sdkmanager "platform-tools" "platforms;android-28"
   - android list target
