@@ -65,7 +65,7 @@ before_install:
   #  - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" "extras;google;m2repository" "extras;android;m2repository"
  # - yes | sdkmanager "sys-img-$ANDROID_ABI-$ANDROID_TAG-$ANDROID_EMULATOR_LEVEL" > /dev/null
-  - yes | sdkmanager "system-images;android-25;google_apis;x86" > /dev/null
+  - yes | sdkmanager "system-images;android-25;google_apis;x86"
   - mkdir /home/travis/android-sdk-linux/licenses || true
   - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
   - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
@@ -73,6 +73,7 @@ before_install:
   - ./sdkmanager-update-accept-all-licenses.sh
   - ./sdkmanager-accept-licenses.sh
    # sys-img-x86-google_apis-25
+  - avdmanager list
   - echo no | avdmanager create avd --force --name testAVD --package "system-images;android-25;google_apis;x86"
  
 
