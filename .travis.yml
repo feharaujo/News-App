@@ -58,7 +58,7 @@ before_install:
   - touch ~/.android/repositories.cfg
   - ./sdkmanager-update-accept-all-licenses.sh
   - ./sdkmanager-accept-licenses.sh
-  - sdkmanager --list --verbose
+  - sdkmanager --list
   #  - echo "yes" | sdkmanager "platform-tools" "platforms;android-29"
   #  - sdkmanager "emulator" "tools" "platform-tools" > /dev/null
   #  - sdkmanager --list | head -15
