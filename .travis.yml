@@ -73,7 +73,7 @@ before_install:
   - ./sdkmanager-update-accept-all-licenses.sh
   - ./sdkmanager-accept-licenses.sh
    # sys-img-x86-google_apis-25
-  - echo no | avdmanager create avd --force --name testAVD --abi "$ANDROID_TAG/$ANDROID_ABI" --package "sys-img-$ANDROID_ABI-$ANDROID_TAG-$ANDROID_EMULATOR_LEVEL"
+  - echo no | avdmanager create avd --force --name testAVD --abi "$ANDROID_TAG/$ANDROID_ABI" --package "system-images;android-25;google_apis;x86"
  
 
 script:
