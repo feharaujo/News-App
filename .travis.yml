@@ -49,6 +49,7 @@ before_install:
   # Permission to run the scripts
   - chmod +x sdkmanager-accept-licenses.sh
   - chmod +x sdkmanager-update-accept-all-licenses.sh
+  - chmod +x sdkmanager-download-emulator.sh
   - cat $HOME/.m2/settings.xml
   - export ANDROID_HOME=~/android-sdk-linux
   - wget -q "https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" -O android-sdk-tools.zip
@@ -66,7 +67,7 @@ before_install:
   #  - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" > /dev/null
   - yes | sdkmanager "build-tools;$ANDROID_BUILD_TOOLS_VERSION" "platforms;android-$TARGET_VERSION" "extras;google;m2repository" "extras;android;m2repository"
  # - yes | sdkmanager "sys-img-$ANDROID_ABI-$ANDROID_TAG-$ANDROID_EMULATOR_LEVEL" > /dev/null
-  - yes | sdkmanager "system-images;android-25;google_apis;x86"
+  - ./sdkmanager-accept-licenses.sh
   - mkdir /home/travis/android-sdk-linux/licenses || true
   - echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
   - echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
